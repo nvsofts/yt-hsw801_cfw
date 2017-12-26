@@ -75,6 +75,7 @@ void loop(void)
   if (P3_7) {
     if (sw_count >= 5000) {
       select_next();
+      P1 = ~(1 << select_port);
 
       set_timer();
     }
@@ -84,7 +85,6 @@ void loop(void)
   }
 
   P0 = hdmi_gpio[select_port][0];
-  P1 = ~(1 << select_port);
 
   p4_data = hdmi_gpio[select_port][1];
   if ((P2 >> select_port) & 0x1) {
